@@ -1,0 +1,47 @@
+.form-wrapper {
+  padding-inline: 1.5rem;
+}
+.btn-toggle {
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.header {
+  padding: 2.5rem 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header h1 {
+  color: white;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.is-dark-bg {
+  background-image: url("../../../assets/images/bg-desktop-dark.jpg");
+  height: 300px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.is-light-bg {
+  background-image: url("../../../assets/images/bg-desktop-light.jpg");
+  height: 300px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media screen and (max-width: 30em) {
+  .is-dark-bg {
+    background-image: url("../../../assets/images/bg-mobile-dark.jpg");
+  }
+  .is-light-bg {
+    background-image: url("../../../assets/images/bg-mobile-light.jpg");
+  }
+}
