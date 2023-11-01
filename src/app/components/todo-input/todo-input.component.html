@@ -1,0 +1,10 @@
+<form
+  [ngClass]="{ 'form-bg-dark': toggleBgColor, 'form-bg-light': !toggleBgColor }"
+>
+  <button
+    class="btn-submit"
+    [ngClass]="{ 'btn-dark': toggleBgColor, 'btn-light': !toggleBgColor }"
+    type="submit"
+  ></button>
+  <input type="text" placeholder="Create a todo" />
+</form>
