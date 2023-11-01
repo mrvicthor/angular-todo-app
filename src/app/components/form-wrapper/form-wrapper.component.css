@@ -37,6 +37,16 @@
   background-size: cover;
 }
 
+.is-light-bg-color {
+  background-color: hsl(0, 0%, 98%);
+  height: 100vh;
+}
+
+.is-dark-bg-color {
+  background-color: hsl(235, 21%, 11%);
+  height: 100vh;
+}
+
 @media screen and (max-width: 30em) {
   .is-dark-bg {
     background-image: url("../../../assets/images/bg-mobile-dark.jpg");

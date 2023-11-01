@@ -1,18 +1,25 @@
-<div
-  class="form-wrapper"
-  [ngClass]="{ 'is-dark-bg': isDark, 'is-light-bg': !isDark }"
+<section
+  [ngClass]="{ 'is-dark-bg-color': isDark, 'is-light-bg-color': !isDark }"
 >
-  <header class="header">
-    <h1>TODO</h1>
-    <button class="btn-toggle" (click)="toggleBackgroundImage()">
-      <img
-        [src]="
-          isDark
-            ? '../../../assets/images/icon-moon.svg'
-            : '../../../assets/images/icon-sun.svg'
-        "
-        alt="sun"
-      />
-    </button>
-  </header>
-</div>
+  <div
+    class="form-wrapper"
+    [ngClass]="{
+      'is-dark-bg ': isDark,
+      'is-light-bg  ': !isDark
+    }"
+  >
+    <header class="header">
+      <h1>TODO</h1>
+      <button class="btn-toggle" (click)="toggleBackgroundImage()">
+        <img
+          [src]="
+            isDark
+              ? '../../../assets/images/icon-moon.svg'
+              : '../../../assets/images/icon-sun.svg'
+          "
+          alt="sun"
+        />
+      </button>
+    </header>
+  </div>
+</section>
