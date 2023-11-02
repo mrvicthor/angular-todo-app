@@ -5,6 +5,12 @@
     class="btn-submit"
     [ngClass]="{ 'btn-dark': toggleBgColor, 'btn-light': !toggleBgColor }"
     type="submit"
+    (click)="$event.preventDefault(); addTodo()"
   ></button>
-  <input type="text" placeholder="Create a todo" />
+  <input
+    type="text"
+    name="newTodo"
+    placeholder="Create a todo"
+    [(ngModel)]="newTodo"
+  />
 </form>

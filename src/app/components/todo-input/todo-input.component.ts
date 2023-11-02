@@ -7,4 +7,8 @@ import { Component, Input } from '@angular/core';
 })
 export class TodoInputComponent {
   @Input() toggleBgColor!: boolean;
+  @Input() newTodo: string = '';
+  addTodo() {
+    console.log('Todo added');
+  }
 }
