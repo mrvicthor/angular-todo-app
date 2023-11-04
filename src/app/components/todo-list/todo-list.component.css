@@ -2,4 +2,92 @@ ul {
   list-style: none;
   margin-top: 3rem;
   border-radius: 6px;
+  padding-bottom: 1rem;
+}
+
+.list-items {
+  display: flex;
+  padding-inline: 1.25rem;
+  padding-block: 1.4rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.list-items--icon {
+  display: none;
+  margin-left: auto;
+}
+
+.list-items:hover .list-items--icon {
+  display: block;
+}
+
+.list-items-title {
+  padding-inline: 2rem;
+}
+.custom-radioButton {
+  display: block;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: -11px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.custom-radioButton input:checked ~ .checkmark {
+  background: linear-gradient(
+    to right,
+    hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%)
+  );
+}
+
+.list-items:hover .checkmark {
+  border: 1px solid #049ccc;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  background: url("../../../assets/images/icon-check.svg") center no-repeat;
+  display: none;
+}
+
+.custom-radioButton input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.custom-radioButton .checkmark:after {
+  top: 5px;
+  left: 5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.input-bg-dark {
+  border: 1px solid #393a4b;
+}
+
+.input-bg-light {
+  border: 1px solid #f5f5f9;
 }
