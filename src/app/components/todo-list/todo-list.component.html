@@ -1,0 +1,5 @@
+<ul
+  [ngClass]="{ 'form-bg-dark': toggleBgColor, 'form-bg-light': !toggleBgColor }"
+>
+  <li *ngFor="let todo of todos">{{ todo.title }}</li>
+</ul>

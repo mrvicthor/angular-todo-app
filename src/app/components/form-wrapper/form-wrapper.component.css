@@ -55,3 +55,14 @@
     background-image: url("../../../assets/images/bg-mobile-light.jpg");
   }
 }
+
+@media screen and (min-width: 45em) {
+  .form-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .form-wrapper-modifier {
+    width: 33.75rem;
+  }
+}

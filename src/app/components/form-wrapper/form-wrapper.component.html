@@ -8,19 +8,22 @@
       'is-light-bg  ': !isDark
     }"
   >
-    <header class="header">
-      <h1>TODO</h1>
-      <button class="btn-toggle" (click)="toggleBackgroundImage()">
-        <img
-          [src]="
-            isDark
-              ? '../../../assets/images/icon-moon.svg'
-              : '../../../assets/images/icon-sun.svg'
-          "
-          alt="sun"
-        />
-      </button>
-    </header>
-    <app-todo-input [toggleBgColor]="isDark"></app-todo-input>
+    <div class="form-wrapper-modifier">
+      <header class="header">
+        <h1>TODO</h1>
+        <button class="btn-toggle" (click)="toggleBackgroundImage()">
+          <img
+            [src]="
+              isDark
+                ? '../../../assets/images/icon-moon.svg'
+                : '../../../assets/images/icon-sun.svg'
+            "
+            alt="sun"
+          />
+        </button>
+      </header>
+      <app-todo-input [toggleBgColor]="isDark"></app-todo-input>
+      <app-todo-list [toggleBgColor]="isDark"></app-todo-list>
+    </div>
   </div>
 </section>

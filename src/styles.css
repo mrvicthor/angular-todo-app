@@ -25,3 +25,11 @@ picutre {
   white-space: nowrap; /* added line */
   border: 0;
 }
+
+.form-bg-light {
+  background-color: #fff;
+}
+
+.form-bg-dark {
+  background-color: hsl(235, 24%, 19%);
+}
