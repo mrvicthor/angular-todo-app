@@ -1,16 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Todo } from 'src/shared/model';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TodoService {
-  getTodos(): Todo[] {
-    const todos: Todo[] = [
-      { id: 1, title: 'learn Angular', completed: false },
-      { id: 2, title: 'ReactJs', completed: false },
-      { id: 3, title: 'Lunch break', completed: true },
-    ];
-    return todos;
+  private todos: Todo[] = [];
+  private todoSubject = new Subject<Todo[]>();
+
+  addTodo(todo: string): void {
+    this.todos.push({
+      id: Math.floor(Math.random() * 100 + 1),
+      title: todo,
+      completed: false,
+    });
+    this.todoSubject.next([...this.todos]);
+  }
+  getTodos(): Observable<Todo[]> {
+    return this.todoSubject.asObservable();
   }
 }

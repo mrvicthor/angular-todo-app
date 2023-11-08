@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TodoService } from 'src/app/services/todo.service';
 import { Todo } from 'src/shared/model';
 
@@ -7,17 +7,10 @@ import { Todo } from 'src/shared/model';
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css'],
 })
-export class TodoListComponent implements OnInit {
+export class TodoListComponent {
   @Input() toggleBgColor!: boolean;
   todos: Todo[] = [];
-  constructor(private todoService: TodoService) {}
-
-  getTodos(): void {
-    this.todos = this.todoService.getTodos();
-  }
-
-  ngOnInit(): void {
-    this.getTodos();
-    console.log(this.todos);
+  constructor(private todoService: TodoService) {
+    this.todoService.getTodos().subscribe((todos) => (this.todos = todos));
   }
 }

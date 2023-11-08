@@ -7,10 +7,8 @@
     type="submit"
     (click)="$event.preventDefault(); addTodo()"
   ></button>
-  <input
-    type="text"
-    name="newTodo"
-    placeholder="Create a todo"
-    [(ngModel)]="newTodo"
-  />
+  <input type="text" placeholder="Create a todo" [formControl]="newTodo" />
 </form>
+<div *ngIf="newTodo.invalid && (newTodo.dirty || newTodo.touched)">
+  Field can not be empty.
+</div>
