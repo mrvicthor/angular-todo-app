@@ -20,4 +20,9 @@ export class TodoService {
   getTodos(): Observable<Todo[]> {
     return this.todoSubject.asObservable();
   }
+  deleteTodo(id: number): void {
+    console.log('triggered', id);
+    this.todos = this.todos.filter((todo) => todo.id !== id);
+    this.todoSubject.next([...this.todos]);
+  }
 }

@@ -14,8 +14,9 @@
     ></label>
 
     <span class="list-items-title">{{ todo.title }}</span
-    ><span class="list-items--icon"
+    ><span (click)="deleteTodo(todo.id)" class="list-items--icon"
       ><img src="../../../assets/images/icon-cross.svg" alt="icon-cross"
     /></span>
   </li>
+  <li></li>
 </ul>

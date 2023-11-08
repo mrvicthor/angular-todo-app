@@ -13,4 +13,7 @@ export class TodoListComponent {
   constructor(private todoService: TodoService) {
     this.todoService.getTodos().subscribe((todos) => (this.todos = todos));
   }
+  deleteTodo(id: number): void {
+    this.todoService.deleteTodo(id);
+  }
 }
