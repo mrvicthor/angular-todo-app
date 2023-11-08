@@ -1,4 +1,5 @@
 <ul
+  *ngIf="todos.length > 0"
   [ngClass]="{ 'form-bg-dark': toggleBgColor, 'form-bg-light': !toggleBgColor }"
 >
   <li *ngFor="let todo of todos" class="list-items">
