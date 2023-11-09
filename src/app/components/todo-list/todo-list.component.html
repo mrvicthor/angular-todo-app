@@ -3,8 +3,8 @@
   [ngClass]="{ 'form-bg-dark': toggleBgColor, 'form-bg-light': !toggleBgColor }"
 >
   <li *ngFor="let todo of todos" class="list-items">
-    <label class="custom-radioButton">
-      <input type="radio" /><span
+    <label class="custom-radioButton" (click)="toggleTodo(todo.id)">
+      <input type="radio" [checked]="todo.completed === true" /><span
         class="checkmark"
         [ngClass]="{
           'input-bg-dark': toggleBgColor,
@@ -13,7 +13,16 @@
       ></span
     ></label>
 
-    <span class="list-items-title">{{ todo.title }}</span
+    <span
+      class="list-items-title"
+      [class.line-through]="todo.completed === true"
+      [class.line-through-light]="todo.completed === true && !toggleBgColor"
+      [class.line-through-dark]="todo.completed === true && toggleBgColor"
+      [ngClass]="{
+        'dark-theme-text': toggleBgColor,
+        'light-theme-text ': !toggleBgColor
+      }"
+      >{{ todo.title }}</span
     ><span (click)="deleteTodo(todo.id)" class="list-items--icon"
       ><img src="../../../assets/images/icon-cross.svg" alt="icon-cross"
     /></span>

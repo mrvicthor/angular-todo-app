@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { TodoService } from 'src/app/services/todo.service';
 
@@ -9,6 +9,7 @@ import { TodoService } from 'src/app/services/todo.service';
 })
 export class TodoInputComponent implements OnInit {
   @Input() toggleBgColor!: boolean;
+  @ViewChild('inputField') inputField!: ElementRef;
   constructor(private todoService: TodoService) {}
   newTodo: FormControl<string | null> = new FormControl<string | null>(
     null,
@@ -18,8 +19,8 @@ export class TodoInputComponent implements OnInit {
     if (this.newTodo.value?.trim() === '') return;
     const newInput = this.newTodo.value;
     this.todoService.addTodo(newInput as string);
-    console.log(this.newTodo);
     this.newTodo.setValue('');
+    this.inputField.nativeElement.blur();
   }
 
   ngOnInit(): void {

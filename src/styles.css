@@ -7,11 +7,28 @@
 
 body {
   font-family: "Josefin Sans", sans-serif;
+  font-size: 18px;
 }
 img,
 picutre {
   max-width: 100%;
   display: block;
+}
+
+.dark-theme-input::placeholder {
+  color: hsl(234, 11%, 52%);
+}
+
+.light-theme-input::placeholder {
+  color: hsl(233, 11%, 84%);
+}
+
+.dark-theme-text {
+  color: hsl(234, 39%, 85%);
+}
+
+.light-theme-text {
+  color: hsl(236, 9%, 61%);
 }
 
 .sr-only {

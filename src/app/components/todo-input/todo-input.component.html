@@ -7,8 +7,22 @@
     type="submit"
     (click)="$event.preventDefault(); addTodo()"
   ></button>
-  <input type="text" placeholder="Create a todo" [formControl]="newTodo" />
+  <input
+    [class.dark-theme-input]="toggleBgColor"
+    [class.light-theme-input]="!toggleBgColor"
+    type="text"
+    #inputField
+    placeholder="Create a todo"
+    [formControl]="newTodo"
+    [ngClass]="{ 'light-input': !toggleBgColor, 'dark-input': toggleBgColor }"
+  />
 </form>
-<div *ngIf="newTodo.invalid && (newTodo.dirty || newTodo.touched)">
+<div
+  class="error"
+  *ngIf="
+    newTodo.invalid &&
+    (newTodo.dirty || newTodo.touched || newTodo.pristine === false)
+  "
+>
   Field can not be empty.
 </div>

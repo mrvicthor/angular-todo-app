@@ -34,7 +34,16 @@ ul {
   user-select: none;
   cursor: pointer;
 }
+.line-through {
+  text-decoration: line-through;
+}
+.line-through-light {
+  color: #d1d2da;
+}
 
+.line-through-dark {
+  color: hsl(234, 39%, 85%);
+}
 input[type="radio"] {
   position: absolute;
   opacity: 0;

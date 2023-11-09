@@ -13,13 +13,26 @@ form {
   color: brown;
 }
 
+.error {
+  padding-top: 0.5rem;
+  color: brown;
+}
+
 input[type="text"] {
   width: 100%;
-  padding-block: 12px;
+  padding-block: 6px;
   padding-right: 1rem;
   background: transparent;
   border: none;
   outline: none;
+  font-size: 18px;
+}
+.light-input {
+  color: hsl(235, 19%, 35%);
+}
+
+.dark-input {
+  color: hsl(234, 39%, 85%);
 }
 
 .btn-submit {
