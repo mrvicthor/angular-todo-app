@@ -19,10 +19,7 @@
 </form>
 <div
   class="error"
-  *ngIf="
-    newTodo.invalid &&
-    (newTodo.dirty || newTodo.touched || newTodo.pristine === false)
-  "
+  *ngIf="newTodo.invalid && newTodo.touched && showErrorMessage"
 >
   Field can not be empty.
 </div>

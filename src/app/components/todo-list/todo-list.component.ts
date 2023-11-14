@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { TodoService } from 'src/app/services/todo.service';
 import { Todo } from 'src/shared/model';
 
@@ -19,6 +20,10 @@ export class TodoListComponent implements OnInit {
   }
   deleteTodo(id: number): void {
     this.todoService.deleteTodo(id);
+  }
+
+  drop(event: CdkDragDrop<Todo[]>) {
+    moveItemInArray(this.todos, event.previousIndex, event.currentIndex);
   }
 
   ngOnInit(): void {

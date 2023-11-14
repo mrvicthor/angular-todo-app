@@ -1,8 +1,10 @@
 <ul
+  cdkDropList
+  (cdkDropListDropped)="drop($event)"
   *ngIf="todos.length > 0"
   [ngClass]="{ 'form-bg-dark': toggleBgColor, 'form-bg-light': !toggleBgColor }"
 >
-  <li *ngFor="let todo of todos" class="list-items">
+  <li *ngFor="let todo of todos" class="list-items" cdkDrag>
     <label class="custom-radioButton" (click)="toggleTodo(todo.id)">
       <input type="radio" [checked]="todo.completed === true" /><span
         class="checkmark"
