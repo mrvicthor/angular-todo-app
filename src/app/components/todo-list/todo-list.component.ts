@@ -10,6 +10,8 @@ import { Todo } from 'src/shared/model';
 })
 export class TodoListComponent implements OnInit {
   @Input() toggleBgColor!: boolean;
+  activeTab: string | null = null;
+  tabs: string[] = ['All', 'Active', 'Completed'];
   todos: Todo[] = [];
   constructor(private todoService: TodoService) {
     this.todoService.getTodos().subscribe((todos) => (this.todos = todos));
@@ -30,7 +32,11 @@ export class TodoListComponent implements OnInit {
     return this.todos.filter((todo) => !todo.completed).length;
   }
 
+  setActive(value: string): void {
+    this.activeTab = value;
+  }
   ngOnInit(): void {
+    this.setActive('All');
     console.log(this.todos);
   }
 }

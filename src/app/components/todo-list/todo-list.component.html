@@ -29,12 +29,56 @@
       ><img src="../../../assets/images/icon-cross.svg" alt="icon-cross"
     /></span>
   </li>
-  <li class="filter-container">
+  <li
+    class="filter-container"
+    [ngClass]="{
+      'filter-container-dark': toggleBgColor,
+      'filter-container-light': !toggleBgColor,
+      'filter-border-top-light ': !toggleBgColor,
+      'filter-border-top-dark ': toggleBgColor
+    }"
+  >
     <div>
       {{ getUncompletedTodos() }}
       {{ getUncompletedTodos() > 1 ? "items" : "item" }} left
     </div>
-    <div><span>All</span><span>Active</span><span>Completed</span></div>
+    <div class="filter-navigator">
+      <span
+        *ngFor="let tab of tabs"
+        [class.active]="tab === activeTab"
+        (click)="setActive(tab)"
+        >{{ tab }}</span
+      >
+    </div>
     <div>Clear Completed</div>
   </li>
 </ul>
+<div
+  *ngIf="todos.length > 0"
+  class="is-mobile-up"
+  [ngClass]="{
+    'form-bg-dark': toggleBgColor,
+    'filter-container-dark': toggleBgColor,
+    'form-bg-light': !toggleBgColor,
+    'filter-container-light': !toggleBgColor
+  }"
+>
+  <div
+    *ngFor="let tab of tabs"
+    [class.active]="tab === activeTab"
+    (click)="setActive(tab)"
+  >
+    {{ tab }}
+  </div>
+</div>
+
+<p
+  class="form-wrapper-text"
+  *ngIf="todos.length > 0"
+  [ngClass]="{
+    'dark-theme-text': toggleBgColor,
+    'light-theme-text ': !toggleBgColor
+  }"
+>
+  Drag and drop to reorder list
+</p>
