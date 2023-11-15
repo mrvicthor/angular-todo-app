@@ -27,6 +27,7 @@ export class TodoService {
     );
     this.todoSubject.next([...this.todos]);
   }
+
   deleteTodo(id: number): void {
     this.todos = this.todos.filter((todo) => todo.id !== id);
     this.todoSubject.next([...this.todos]);

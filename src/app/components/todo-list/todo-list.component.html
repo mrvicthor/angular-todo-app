@@ -29,5 +29,12 @@
       ><img src="../../../assets/images/icon-cross.svg" alt="icon-cross"
     /></span>
   </li>
-  <li></li>
+  <li class="filter-container">
+    <div>
+      {{ getUncompletedTodos() }}
+      {{ getUncompletedTodos() > 1 ? "items" : "item" }} left
+    </div>
+    <div><span>All</span><span>Active</span><span>Completed</span></div>
+    <div>Clear Completed</div>
+  </li>
 </ul>

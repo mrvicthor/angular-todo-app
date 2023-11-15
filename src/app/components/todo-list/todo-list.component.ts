@@ -26,6 +26,10 @@ export class TodoListComponent implements OnInit {
     moveItemInArray(this.todos, event.previousIndex, event.currentIndex);
   }
 
+  getUncompletedTodos(): number {
+    return this.todos.filter((todo) => !todo.completed).length;
+  }
+
   ngOnInit(): void {
     console.log(this.todos);
   }

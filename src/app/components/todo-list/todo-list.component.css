@@ -119,3 +119,8 @@ input[type="radio"] {
 ul.cdk-drop-list-dragging .list-items:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
+
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+}
