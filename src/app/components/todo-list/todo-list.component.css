@@ -139,6 +139,12 @@ ul.cdk-drop-list-dragging .list-items:not(.cdk-drag-placeholder) {
   gap: 1rem;
   font-weight: bold;
 }
+.filter-navigator > span {
+  cursor: pointer;
+}
+.delete-todo {
+  cursor: pointer;
+}
 
 .filter-container-light {
   color: hsl(235, 19%, 35%);
@@ -149,6 +155,9 @@ ul.cdk-drop-list-dragging .list-items:not(.cdk-drag-placeholder) {
 }
 .is-mobile-up {
   display: none;
+}
+.is-mobile-up > div {
+  cursor: pointer;
 }
 @media screen and (max-width: 30em) {
   .filter-navigator {
@@ -173,4 +182,13 @@ ul.cdk-drop-list-dragging .list-items:not(.cdk-drag-placeholder) {
 .form-wrapper-text {
   margin-top: 3rem;
   text-align: center;
+  font-size: 14px;
+}
+
+.form-wrapper-text-light {
+  color: #9495a5;
+}
+
+.form-wrapper-text-dark {
+  color: #5b5e7e;
 }

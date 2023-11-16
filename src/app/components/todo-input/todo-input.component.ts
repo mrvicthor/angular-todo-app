@@ -25,7 +25,6 @@ export class TodoInputComponent implements OnInit {
     const newInput = this.newTodo.value;
     this.todoService.addTodo(newInput as string);
     this.newTodo.setValue('');
-    this.inputField.nativeElement.blur();
     this.showErrorMessage = false;
   }
 

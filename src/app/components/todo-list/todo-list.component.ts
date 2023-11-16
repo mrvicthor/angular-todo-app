@@ -13,9 +13,8 @@ export class TodoListComponent implements OnInit {
   activeTab: string | null = null;
   tabs: string[] = ['All', 'Active', 'Completed'];
   todos: Todo[] = [];
-  constructor(private todoService: TodoService) {
-    this.todoService.getTodos().subscribe((todos) => (this.todos = todos));
-  }
+  filter: 'All' | 'Active' | 'Completed' = 'All';
+  constructor(private todoService: TodoService) {}
   toggleTodo(id: number): void {
     this.todoService.toggleComplete(id);
     console.log(this.todos);
@@ -35,8 +34,29 @@ export class TodoListComponent implements OnInit {
   setActive(value: string): void {
     this.activeTab = value;
   }
+
+  filterTodos(todos: Todo[]): Todo[] {
+    switch (this.filter) {
+      case 'Active':
+        return todos.filter((todo) => todo.completed === false);
+      case 'Completed':
+        return todos.filter((todo) => todo.completed === true);
+      default:
+        return todos;
+    }
+  }
+
+  handleFilter(filter: 'All' | 'Active' | 'Completed'): void {
+    this.filter = filter;
+    this.todoService.getTodos().subscribe((todos) => {
+      this.todos = this.filterTodos(todos);
+    });
+  }
+
   ngOnInit(): void {
     this.setActive('All');
-    console.log(this.todos);
+    this.todoService
+      .getTodos()
+      .subscribe((todos) => (this.todos = this.filterTodos(todos)));
   }
 }

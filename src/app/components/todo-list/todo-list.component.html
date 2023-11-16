@@ -39,18 +39,27 @@
     }"
   >
     <div>
-      {{ getUncompletedTodos() }}
-      {{ getUncompletedTodos() > 1 ? "items" : "item" }} left
+      {{ todos.length }}
+      {{ todos.length > 1 ? "items" : "item" }} left
     </div>
     <div class="filter-navigator">
       <span
-        *ngFor="let tab of tabs"
-        [class.active]="tab === activeTab"
-        (click)="setActive(tab)"
-        >{{ tab }}</span
+        [class.active]="'All' === activeTab"
+        (click)="setActive('All'); handleFilter('All')"
+        >All</span
+      >
+      <span
+        [class.active]="'Active' === activeTab"
+        (click)="setActive('Active'); handleFilter('Active')"
+        >Active</span
+      >
+      <span
+        [class.active]="'Completed' === activeTab"
+        (click)="setActive('Completed'); handleFilter('Completed')"
+        >Completed</span
       >
     </div>
-    <div>Clear Completed</div>
+    <div class="delete-todo">Clear Completed</div>
   </li>
 </ul>
 <div
@@ -64,11 +73,22 @@
   }"
 >
   <div
-    *ngFor="let tab of tabs"
-    [class.active]="tab === activeTab"
-    (click)="setActive(tab)"
+    [class.active]="'All' === activeTab"
+    (click)="setActive('All'); handleFilter('All')"
   >
-    {{ tab }}
+    All
+  </div>
+  <div
+    [class.active]="'Active' === activeTab"
+    (click)="setActive('Active'); handleFilter('Active')"
+  >
+    Active
+  </div>
+  <div
+    [class.active]="'Completed' === activeTab"
+    (click)="setActive('Completed'); handleFilter('Completed')"
+  >
+    Completed
   </div>
 </div>
 
@@ -76,8 +96,8 @@
   class="form-wrapper-text"
   *ngIf="todos.length > 0"
   [ngClass]="{
-    'dark-theme-text': toggleBgColor,
-    'light-theme-text ': !toggleBgColor
+    'form-wrapper-text-dark': toggleBgColor,
+    'form-wrapper-text-light': !toggleBgColor
   }"
 >
   Drag and drop to reorder list
