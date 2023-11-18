@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { TodoService } from 'src/app/services/todo.service';
-import { Todo } from 'src/shared/model';
+import { Todo, FilterState } from 'src/shared/model';
+import { map, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-todo-list',
@@ -10,15 +11,29 @@ import { Todo } from 'src/shared/model';
 })
 export class TodoListComponent implements OnInit {
   @Input() toggleBgColor!: boolean;
-  activeTab: string | null = null;
-  tabs: string[] = ['All', 'Active', 'Completed'];
   todos: Todo[] = [];
-  filter: 'All' | 'Active' | 'Completed' = 'All';
-  constructor(private todoService: TodoService) {}
+  totalActiveTodo: number = 0;
+  FilterState = FilterState;
+  activeFilter: BehaviorSubject<FilterState> = new BehaviorSubject<FilterState>(
+    FilterState.ALL
+  );
+  constructor(private todoService: TodoService) {
+    this.todoService.getTodos().subscribe((todos) => (this.todos = todos));
+    this.todoService
+      .getTodos()
+      .pipe(
+        map((todos: Todo[]) => todos.filter((todo) => !todo.completed).length)
+      )
+      .subscribe((totalActiveTodos: number) => {
+        this.totalActiveTodo = totalActiveTodos;
+      });
+  }
   toggleTodo(id: number): void {
     this.todoService.toggleComplete(id);
     console.log(this.todos);
   }
+
+  ngOnInit(): void {}
   deleteTodo(id: number): void {
     this.todoService.deleteTodo(id);
   }
@@ -27,36 +42,11 @@ export class TodoListComponent implements OnInit {
     moveItemInArray(this.todos, event.previousIndex, event.currentIndex);
   }
 
-  getUncompletedTodos(): number {
-    return this.todos.filter((todo) => !todo.completed).length;
+  clearCompletedTodo() {
+    this.todoService.clearCompleted();
   }
-
-  setActive(value: string): void {
-    this.activeTab = value;
-  }
-
-  filterTodos(todos: Todo[]): Todo[] {
-    switch (this.filter) {
-      case 'Active':
-        return todos.filter((todo) => todo.completed === false);
-      case 'Completed':
-        return todos.filter((todo) => todo.completed === true);
-      default:
-        return todos;
-    }
-  }
-
-  handleFilter(filter: 'All' | 'Active' | 'Completed'): void {
-    this.filter = filter;
-    this.todoService.getTodos().subscribe((todos) => {
-      this.todos = this.filterTodos(todos);
-    });
-  }
-
-  ngOnInit(): void {
-    this.setActive('All');
-    this.todoService
-      .getTodos()
-      .subscribe((todos) => (this.todos = this.filterTodos(todos)));
+  setActive(filterState: FilterState): void {
+    this.activeFilter.next(filterState);
+    this.todoService.filterTodos(filterState);
   }
 }

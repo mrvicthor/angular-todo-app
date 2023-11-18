@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Todo } from 'src/shared/model';
+import { FilterState, Todo } from 'src/shared/model';
 import { Observable, Subject } from 'rxjs';
 
 @Injectable({
@@ -15,7 +15,7 @@ export class TodoService {
       title: todo,
       completed: false,
     });
-    this.todoSubject.next([...this.todos]);
+    this.updateTodoSubject();
   }
   getTodos(): Observable<Todo[]> {
     return this.todoSubject.asObservable();
@@ -25,11 +25,32 @@ export class TodoService {
     this.todos = this.todos.map((todo) =>
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     );
-    this.todoSubject.next([...this.todos]);
+    this.updateTodoSubject();
   }
 
   deleteTodo(id: number): void {
     this.todos = this.todos.filter((todo) => todo.id !== id);
+    this.updateTodoSubject();
+  }
+
+  private updateTodoSubject(): void {
     this.todoSubject.next([...this.todos]);
+  }
+
+  filterTodos(filterState: FilterState): void {
+    let filteredTodos: Todo[] = this.todos;
+
+    if (filterState === FilterState.ACTIVE) {
+      filteredTodos = this.todos.filter((todo) => todo.completed === false);
+    } else if (filterState === FilterState.COMPLETED) {
+      filteredTodos = this.todos.filter((todo) => todo.completed === true);
+    }
+
+    this.todoSubject.next(filteredTodos);
+  }
+
+  clearCompleted(): void {
+    this.todos = this.todos.filter((todo) => todo.completed === false);
+    this.updateTodoSubject();
   }
 }

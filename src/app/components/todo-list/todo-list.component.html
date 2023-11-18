@@ -1,7 +1,7 @@
 <ul
+  *ngIf="todos.length > 0"
   cdkDropList
   (cdkDropListDropped)="drop($event)"
-  *ngIf="todos.length > 0"
   [ngClass]="{ 'form-bg-dark': toggleBgColor, 'form-bg-light': !toggleBgColor }"
 >
   <li *ngFor="let todo of todos" class="list-items" cdkDrag>
@@ -39,31 +39,32 @@
     }"
   >
     <div>
-      {{ todos.length }}
-      {{ todos.length > 1 ? "items" : "item" }} left
+      {{ totalActiveTodo }}
+      {{ totalActiveTodo > 1 ? "items" : "item" }} left
     </div>
     <div class="filter-navigator">
       <span
-        [class.active]="'All' === activeTab"
-        (click)="setActive('All'); handleFilter('All')"
+        [class.active]="activeFilter.value === 'All'"
+        (click)="setActive(FilterState.ALL)"
         >All</span
       >
       <span
-        [class.active]="'Active' === activeTab"
-        (click)="setActive('Active'); handleFilter('Active')"
+        [class.active]="activeFilter.value === 'Active'"
+        (click)="setActive(FilterState.ACTIVE)"
         >Active</span
       >
       <span
-        [class.active]="'Completed' === activeTab"
-        (click)="setActive('Completed'); handleFilter('Completed')"
+        [class.active]="activeFilter.value === 'Completed'"
+        (click)="setActive(FilterState.COMPLETED)"
         >Completed</span
       >
     </div>
-    <div class="delete-todo">Clear Completed</div>
+    <div class="delete-todo" (click)="clearCompletedTodo()">
+      Clear Completed
+    </div>
   </li>
 </ul>
 <div
-  *ngIf="todos.length > 0"
   class="is-mobile-up"
   [ngClass]="{
     'form-bg-dark': toggleBgColor,
@@ -73,20 +74,20 @@
   }"
 >
   <div
-    [class.active]="'All' === activeTab"
-    (click)="setActive('All'); handleFilter('All')"
+    [class.active]="activeFilter.value === FilterState.ALL"
+    (click)="setActive(FilterState.ALL)"
   >
     All
   </div>
   <div
-    [class.active]="'Active' === activeTab"
-    (click)="setActive('Active'); handleFilter('Active')"
+    [class.active]="activeFilter.value === FilterState.ACTIVE"
+    (click)="setActive(FilterState.ACTIVE)"
   >
     Active
   </div>
   <div
-    [class.active]="'Completed' === activeTab"
-    (click)="setActive('Completed'); handleFilter('Completed')"
+    [class.active]="activeFilter.value === FilterState.COMPLETED"
+    (click)="setActive(FilterState.COMPLETED)"
   >
     Completed
   </div>
