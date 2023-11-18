@@ -1,7 +1,8 @@
 ul {
   list-style: none;
   margin-top: 3rem;
-  border-radius: 6px;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
 }
 
 .list-items {
@@ -49,6 +50,15 @@ input[type="radio"] {
   cursor: pointer;
   height: 0;
   width: 0;
+}
+
+section {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.hide-if-todo {
+  margin-top: 3rem;
 }
 
 .checkmark {

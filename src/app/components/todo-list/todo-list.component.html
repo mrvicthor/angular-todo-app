@@ -1,5 +1,5 @@
 <ul
-  *ngIf="todos.length > 0"
+  *ngIf="todos.length > 0 && todos.length"
   cdkDropList
   (cdkDropListDropped)="drop($event)"
   [ngClass]="{ 'form-bg-dark': toggleBgColor, 'form-bg-light': !toggleBgColor }"
@@ -29,41 +29,42 @@
       ><img src="../../../assets/images/icon-cross.svg" alt="icon-cross"
     /></span>
   </li>
-  <li
-    class="filter-container"
-    [ngClass]="{
-      'filter-container-dark': toggleBgColor,
-      'filter-container-light': !toggleBgColor,
-      'filter-border-top-light ': !toggleBgColor,
-      'filter-border-top-dark ': toggleBgColor
-    }"
-  >
-    <div>
-      {{ totalActiveTodo }}
-      {{ totalActiveTodo > 1 ? "items" : "item" }} left
-    </div>
-    <div class="filter-navigator">
-      <span
-        [class.active]="activeFilter.value === 'All'"
-        (click)="setActive(FilterState.ALL)"
-        >All</span
-      >
-      <span
-        [class.active]="activeFilter.value === 'Active'"
-        (click)="setActive(FilterState.ACTIVE)"
-        >Active</span
-      >
-      <span
-        [class.active]="activeFilter.value === 'Completed'"
-        (click)="setActive(FilterState.COMPLETED)"
-        >Completed</span
-      >
-    </div>
-    <div class="delete-todo" (click)="clearCompletedTodo()">
-      Clear Completed
-    </div>
-  </li>
 </ul>
+<section class="hide-if-todo" *ngIf="!todos.length"></section>
+<section
+  class="filter-container"
+  [ngClass]="{
+    'form-bg-dark': toggleBgColor,
+    'form-bg-light': !toggleBgColor,
+    'filter-container-dark': toggleBgColor,
+    'filter-container-light': !toggleBgColor,
+    'filter-border-top-light ': !toggleBgColor,
+    'filter-border-top-dark ': toggleBgColor
+  }"
+>
+  <div>
+    {{ totalActiveTodo }}
+    {{ totalActiveTodo > 1 ? "items" : "item" }} left
+  </div>
+  <div class="filter-navigator">
+    <span
+      [class.active]="activeFilter.value === FilterState.ALL"
+      (click)="setActive(FilterState.ALL)"
+      >All</span
+    >
+    <span
+      [class.active]="activeFilter.value === FilterState.ACTIVE"
+      (click)="setActive(FilterState.ACTIVE)"
+      >Active</span
+    >
+    <span
+      [class.active]="activeFilter.value === FilterState.COMPLETED"
+      (click)="setActive(FilterState.COMPLETED)"
+      >Completed</span
+    >
+  </div>
+  <div class="delete-todo" (click)="clearCompletedTodo()">Clear Completed</div>
+</section>
 <div
   class="is-mobile-up"
   [ngClass]="{
