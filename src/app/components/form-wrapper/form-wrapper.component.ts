@@ -11,6 +11,5 @@ export class FormWrapperComponent {
   isLightBg: string = '../../../assets/images/icon-moon.svg';
   toggleBackgroundImage() {
     this.isDark = !this.isDark;
-    console.log(this.isDark);
   }
 }

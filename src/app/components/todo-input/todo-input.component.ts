@@ -18,7 +18,6 @@ export class TodoInputComponent implements OnInit {
   );
   addTodo(): void {
     if (this.newTodo.value?.trim() === '' || this.newTodo.value === null) {
-      console.log('empty');
       this.showErrorMessage = true;
       return;
     }

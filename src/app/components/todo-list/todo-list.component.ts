@@ -30,7 +30,6 @@ export class TodoListComponent implements OnInit {
   }
   toggleTodo(id: number): void {
     this.todoService.toggleComplete(id);
-    console.log(this.todos);
   }
 
   ngOnInit(): void {}
