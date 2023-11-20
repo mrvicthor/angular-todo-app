@@ -1,27 +1,78 @@
-# TodoApp
+# Frontend Mentor - Todo app solution
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+This is a solution to the [Todo app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Development server
+## Table of contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-## Code scaffolding
+**Note: Delete this note and update the table of contents based on what sections you keep.**
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Overview
 
-## Build
+### The challenge
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Users should be able to:
 
-## Running unit tests
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Add new todos to the list
+- Mark todos as complete
+- Delete todos from the list
+- Filter by all/active/complete todos
+- Clear all completed todos
+- Toggle light and dark mode
+- **Bonus**: Drag and drop to reorder items on the list
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Screenshot
 
-## Running end-to-end tests
+![](./screenshot.png)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Links
 
-## Further help
+- Solution URL: [https://github.com/mrvicthor/angular-todo-app]
+- Live Site URL: [https://angular-todo-app-pied.vercel.app/]
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## My process
+
+### Built with
+
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- Mobile-first workflow
+- [Angular](https://angular.io/) - JS framework
+- [RxJS]
+
+### What I learned
+
+This project was a means to learn Angular. I learned that Services are a great way to share information among classes that do not know each other. Additionally, I learned how to use reactive forms.
+
+### Continued development
+
+I plan to continue to explore more features of angular and improve my understanding of RxJS.
+
+### Useful resources
+
+- [https://angular.io/docs] - This helped me understand how to create an application in angular.
+- [https://rxjs.dev/guide/overview] - This is an amazing website that helped understand how to react to changes within my application.
+
+## Author
+
+- Website - [Victor Eleanya](https://portfolio-six-navy-11.vercel.app/)
+- Frontend Mentor - [@mrvicthor](https://www.frontendmentor.io/profile/mrvicthor)
+- Twitter - [@eva_skillz](https://twitter.com/eva_skillz)
+
+## Acknowledgments
+
+I will like to acknowledge my senior colleagues and line manager at Vertu Motors for the reviews and feedback. They inspired me to learn this framework.
