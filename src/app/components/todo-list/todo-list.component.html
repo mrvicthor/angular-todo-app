@@ -24,7 +24,7 @@
         'dark-theme-text': toggleBgColor,
         'light-theme-text ': !toggleBgColor
       }"
-      >{{ todo.title }}</span
+      >{{ todo.title | titlecase }}</span
     ><span (click)="deleteTodo(todo.id)" class="list-items--icon"
       ><img src="../../../assets/images/icon-cross.svg" alt="icon-cross"
     /></span>
